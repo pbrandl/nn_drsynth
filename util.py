@@ -9,9 +9,6 @@ import soundfile as sf
 import torchaudio as ta
 from pydub import AudioSegment, effects
 
-path = 'snares/'
-path_processed = 'proc-snares/'
-
 
 def convert_to_wav(in_path: str, out_path: str, bits=16):
     for file in glob.glob(f'{in_path}/*'):
@@ -155,13 +152,3 @@ def fast_downsample(path: str, expected_sr: int):
             idxs = np.rint(np.arange(0, data.shape[1] - 1, ratio)).astype(int)
             data = data[:, idxs]
             ta.save(file, data, expected_sr)
-
-# convert_to_wav(path, path_processed, bits=16)
-# fast_downsample(path_processed, 44100)
-# convert_to_mono(path_processed)
-# check_all_mono(path_processed)
-# trim_from_start(path_processed)
-# trim_from_end(path_processed)
-# hard_trim(path_processed, trim_at=44100 // 3)
-# num_exceed_duration(44100 // 3, path_processed)
-# object_to_file('snares2.db', files_to_tensor(path_processed))
