@@ -2,4 +2,4 @@
 
 Neural drum synthesis using a VAE.
 
-tbd
+Readme tbd
